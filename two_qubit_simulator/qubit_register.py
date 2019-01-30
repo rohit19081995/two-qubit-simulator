@@ -18,7 +18,7 @@ class QubitRegister(object): # pylint: disable=useless-object-inheritance
 
     def __init__(self, initial_state=np.kron(np.array([[0.5, 0.5], [0.5, 0.5]]), np.array([[0.5, 0.5], [0.5, 0.5]]))):
         """ Create a QubitRegister object """
-        self.state=initial_state
+        self.state=initial_state/np.trace(initial_state)
 
 
     def apply_unitary(self, unitary=np.kron(np.array([[1.0, 0.0], [0.0, 1.0]]), np.array([[1.0, 0.0], [0.0, 1.0]]))):
