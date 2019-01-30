@@ -26,8 +26,6 @@ class QubitRegister(object): # pylint: disable=useless-object-inheritance
         #Updates qubit state by applying unitary gate 'unitary'
         self.state=unitary.dot(self.state)
 
-        pass
-
     def measure(self, number_of_samples=1):
         """ Perform a measurement of the qubit register by sampling from a uniform
             probability distribution.
