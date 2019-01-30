@@ -24,6 +24,9 @@ class QubitRegister(object): # pylint: disable=useless-object-inheritance
     def apply_unitary(self, unitary=np.kron(np.array([[1.0, 0.0], [0.0, 1.0]]), np.array([[1.0, 0.0], [0.0, 1.0]]))):
         """ Apply a unitary state transformation on the qubit register """
         #Updates qubit state by applying unitary gate 'unitary'
+
+        if len(unitary) is not 4:
+            raise 'Wrong dimensions. Matrix dimensions should be 4', len(unitary)
         self.state=unitary.dot(self.state)
 
     def measure(self, number_of_samples=1):
