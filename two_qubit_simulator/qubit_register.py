@@ -16,18 +16,18 @@ class QubitRegister(object): # pylint: disable=useless-object-inheritance
 
     """
 
-    def __init__(self, initial_state=np.kron(np.array([[0.5, 0.5], [0.5, 0.5]]), np.array([[0.5, 0.5], [0.5, 0.5]]))):
+    def __init__(self, initial_state = None):
         """ Create a QubitRegister object """
+        if (initial_state is None):
+            initial_state = np.diag([1,0,0,0])
         self.state=initial_state/np.trace(initial_state)
-
-
-    def apply_unitary(self, unitary=np.kron(np.array([[1.0, 0.0], [0.0, 1.0]]), np.array([[1.0, 0.0], [0.0, 1.0]]))):
+        
+    def apply_gate(self, gate):
         """ Apply a unitary state transformation on the qubit register """
-        #Updates qubit state by applying unitary gate 'unitary'
-
-        if len(unitary) is not 4:
-            raise 'Wrong dimensions. Matrix dimensions should be 4', len(unitary)
-        self.state=unitary.dot(self.state)
+        #Updates qubit state by applying unitary gate 'gate'
+        if len(gate) is not 4:
+            raise 'Wrong dimensions. Matrix dimensions should be 4', len(gate)
+        self.state=gate.dot(self.state)
 
     def measure(self, number_of_samples=1):
         """ Perform a measurement of the qubit register by sampling from a uniform
