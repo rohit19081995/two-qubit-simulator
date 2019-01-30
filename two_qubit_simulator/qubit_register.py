@@ -16,12 +16,12 @@ class QubitRegister(object): # pylint: disable=useless-object-inheritance
 
     """
 
-    def __init__(self, initial_state=np.kron(np.array([[0.5, 0.5], [0.5, 0.5]]), np.array([[0.5, 0.5], [0.5, 0.5]])):
+    def __init__(self, initial_state=np.kron(np.array([[0.5, 0.5], [0.5, 0.5]]), np.array([[0.5, 0.5], [0.5, 0.5]]))):
         """ Create a QubitRegister object """
         self.state=initial_state
 
 
-    def apply_unitary(self, unitary=np.kron(np.array([[1.0, 0.0], [0.0, 1.0]]), np.array([[1.0, 0.0], [0.0, 1.0]])):
+    def apply_unitary(self, unitary=np.kron(np.array([[1.0, 0.0], [0.0, 1.0]]), np.array([[1.0, 0.0], [0.0, 1.0]]))):
         """ Apply a unitary state transformation on the qubit register """
         #Updates qubit state by applying unitary gate 'unitary'
         self.state=unitary.dot(self.state)
